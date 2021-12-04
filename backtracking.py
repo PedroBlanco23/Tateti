@@ -49,9 +49,12 @@ def tateti(tablero, turno):
   for espacio in espaciosVacios:
     tablero[espacio[0]][espacio[1]] = turno
     if turno == "X":
-      valor = max (valor, tateti(tablero, "O"))
+      if valor != 10:
+        valor = max (valor, tateti(tablero, "O"))
+
     else:
-      valor = min (valor, tateti(tablero, "X"))
+        if valor != -10:
+          valor = min (valor, tateti(tablero, "X"))
     tablero[espacio[0]][espacio[1]] = ""
   return valor
 
